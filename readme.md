@@ -50,3 +50,23 @@ A la final consegui este API, https://github.com/thelinmichael/spotify-web-api-j
 
 Vamos a utilizar entonces una app web, que le metes el id del album y funciona
 
+===========
+
+Playlist creation example
+
+
+
+http://lab.possan.se/playlistcreator-example
+
+
+
+See on realtime popular lists
+
+
+
+Check artist explorer:
+
+https://artistexplorer.spotify.com
+
+
+
