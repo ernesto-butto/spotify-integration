@@ -6,8 +6,14 @@ Java API, https://github.com/thelinmichael/spotify-web-api-java, el cual le agre
 Usar el search para buscar ids
 https://developer.spotify.com/web-api/search-item/
 
+Object model
+https://developer.spotify.com/web-api/object-model/
 
-Album
+Audio feature
+https://developer.spotify.com/web-api/object-model/#audio-features-object
+
+
+Album id example
 64E5px1Lqx9zXSpQ8yoVx5
 
 
