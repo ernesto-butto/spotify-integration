@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: spotify-integration
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.catwizard.spotify
+Build-Jdk: 1.8.0_71
+Built-By: poolebu
+Created-By: IntelliJ IDEA
+Main-Class: ${start-class}
+
