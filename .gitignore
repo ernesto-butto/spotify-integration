@@ -15,3 +15,5 @@ node_modules/
 platforms/
 plugins/
 *.class
+
+*.MF
