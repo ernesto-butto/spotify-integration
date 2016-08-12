@@ -1,6 +1,17 @@
 
 *.iml
-
 *.ipr
-
 *.iws
+*.ids
+#.*
+.#*
+*.*~
+
+target/
+bower_components/
+node_modules/
+
+# Ionic ignores
+platforms/
+plugins/
+*.class
