@@ -2,6 +2,7 @@ package com.catwizard.spotify;
 
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,7 @@ public class SearchControllerTests {
 	}
 
 	@Test
+	@Ignore
 	public void searchAlbumByIdTest() throws Exception {
 
 		this.mockMvc.perform(get("/search/album").param("albumId", "7e0ij2fpWaxOEHv5fUYZjd"))
@@ -48,6 +50,7 @@ public class SearchControllerTests {
 	}
 
 	@Test
+	@Ignore
 	public void searchTrackByIdTest() throws Exception {
 
 		this.mockMvc.perform(get("/search/track").param("trackId", "1vpwWCCXYYMAaRMTfsnDpk"))
@@ -57,5 +60,26 @@ public class SearchControllerTests {
 
 
 	}
+
+	@Test
+	public void searchUserPlaylist() throws Exception{
+
+
+		this.mockMvc.perform(get("/search/userPlaylist").
+				param("userId","22gpp7ti6ntk63rxegrxfydya")
+		.param("playlistId","4iIp1nnBtNDXdGIH2HQiLJ"))
+		.andDo(print())
+		.andExpect(status().isOk());
+	}
+
+	@Test
+	@Ignore
+	public void searchAudioObjectTest() throws Exception{
+
+		this.mockMvc.perform(get("/search/audio").param("trackId", "1vpwWCCXYYMAaRMTfsnDpk")) ;
+
+	}
+
+
 
 }

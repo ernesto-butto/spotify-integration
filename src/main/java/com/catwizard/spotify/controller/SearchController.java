@@ -1,5 +1,6 @@
-package com.catwizard.spotify.service;
+package com.catwizard.spotify.controller;
 
+import com.catwizard.spotify.service.SearchService;
 import com.wrapper.spotify.models.Album;
 import com.wrapper.spotify.models.Track;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,15 @@ public class SearchController {
 
     }
 
+    @RequestMapping("/userPlaylist")
+    public String userPlaylist(@RequestParam(value = "userId") String userId,
+                               @RequestParam(value = "playlistId") String playlistId){
+
+        return searchService.searchPlaylistSongs(userId,playlistId);
+
+
+    }
+
     /**
      * EG http://localhost:8080/search/track?trackId=1vpwWCCXYYMAaRMTfsnDpk
      * @param trackId
@@ -46,6 +56,16 @@ public class SearchController {
         return searchService.searchTrackById(trackId);
 
     }
+
+    ///search/audio
+
+    @RequestMapping("/audio")
+       public String audio(@RequestParam(value = "trackId") String trackId) {
+
+           return searchService.searchAudioById(trackId);
+
+       }
+
 
 
 }
