@@ -1,5 +1,6 @@
 package com.catwizard.spotify.service;
 
+import com.catwizard.spotify.domain.SpotifyUser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
@@ -19,6 +20,7 @@ import org.apache.http.util.EntityUtils;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -44,6 +46,9 @@ public class SearchService {
             .clientSecret(clientSecret)
             .redirectURI(redirectUri)
             .build();
+
+
+
 
     /* Create a default API instance that will be used to make requests to Spotify */
 
@@ -163,19 +168,32 @@ public class SearchService {
         return null;
     }
 
-    public List<SimplePlaylist> searchPlalistOfUser(String userId){
+    public List<SimplePlaylist> searchPlalistOfUser(SpotifyUser spotifyUser){
 
-        UserPlaylistsRequest userPlaylistsRequest = defaultApi.getPlaylistsForUser(userId).build();
+        UserPlaylistsRequest userPlaylistsRequest = defaultApi.getPlaylistsForUser(spotifyUser.getId()).accessToken(spotifyUser.getAccessToken()).build();
 
-        List<SimplePlaylist> simplePlaylists =null;
+        List<SimplePlaylist> simplePlaylists =new ArrayList<SimplePlaylist>();
+
         try {
-            simplePlaylists = userPlaylistsRequest.get().getItems();
+            final Page<SimplePlaylist> playlistsPage = userPlaylistsRequest.get();
+
+            System.out.println("Adding playlists to playlist list");
+
+            for (SimplePlaylist playlist : playlistsPage.getItems()) {
+
+                System.out.println(playlist.getName());
+
+                simplePlaylists.add(playlist);
+
+              }
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (WebApiException e) {
             e.printStackTrace();
         }
 
+        System.out.println("Added "+ simplePlaylists.size()+" playlists");
         return simplePlaylists;
     }
 

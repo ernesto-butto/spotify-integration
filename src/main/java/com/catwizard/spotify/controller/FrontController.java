@@ -38,7 +38,7 @@ public class FrontController {
     @RequestMapping(value = "userinfo",consumes="application/json")
     public String userinfo(@RequestBody SpotifyUser spotifyUser){
 
-		List<SimplePlaylist> playlists =	searchService.searchPlalistOfUser(spotifyUser.getId());
+		List<SimplePlaylist> playlists =	searchService.searchPlalistOfUser(spotifyUser);
 
         return "main-app-template-name";
     }
