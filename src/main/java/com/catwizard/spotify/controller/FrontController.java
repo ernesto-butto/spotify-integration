@@ -7,10 +7,7 @@ import com.wrapper.spotify.models.SimplePlaylist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +20,7 @@ import java.util.Map;
 /**
  * Created by poolebu on 11/13/16.
  */
-@Controller
+@RestController
 public class FrontController {
 
     @Autowired
@@ -36,11 +33,13 @@ public class FrontController {
        }
 
     @RequestMapping(value = "userinfo",consumes="application/json")
-    public String userinfo(@RequestBody SpotifyUser spotifyUser){
+    public List<SimplePlaylist> userinfo(@RequestBody SpotifyUser spotifyUser){
 
 		List<SimplePlaylist> playlists =	searchService.searchPlalistOfUser(spotifyUser);
 
-        return "main-app-template-name";
+
+
+        return playlists;
     }
 
     public void handleRequest(HttpServletRequest req, HttpServletResponse res) throws IOException {
