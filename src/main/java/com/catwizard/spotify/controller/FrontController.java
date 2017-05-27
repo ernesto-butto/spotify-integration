@@ -33,13 +33,13 @@ public class FrontController {
        }
 
     @RequestMapping(value = "userinfo",consumes="application/json")
-    public List<SimplePlaylist> userinfo(@RequestBody SpotifyUser spotifyUser){
+    public String userinfo(@RequestBody SpotifyUser spotifyUser, Model model){
 
 		List<SimplePlaylist> playlists =	searchService.searchPlalistOfUser(spotifyUser);
 
+	    model.addAttribute(playlists);
 
-
-        return playlists;
+        return "playlist";
     }
 
     public void handleRequest(HttpServletRequest req, HttpServletResponse res) throws IOException {
